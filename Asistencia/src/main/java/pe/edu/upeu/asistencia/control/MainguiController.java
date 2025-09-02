@@ -1,10 +1,19 @@
 package pe.edu.upeu.asistencia.control;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.TabPane;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+
+import java.util.Map;
+
 
 @Controller
 public class MainguiController {
@@ -14,4 +23,61 @@ public class MainguiController {
     MenuBar menuBar;
     @FXML
     TabPane tabPane;
+
+    @FXML
+    MenuItem menuItem1, menuItemC ;
+    @Autowired
+    ApplicationContext context;
+
+    @FXML
+    public void initialize(){
+        MenuItemListener mItemListener = new MenuItemListener();
+        menuItem1.setOnAction(mItemListener::handle);
+        menuItemC.setOnAction(mItemListener::handle);
+
+    }
+
+    class MenuItemListener  {
+        Map<String, String[]> menuConfig=Map.of(
+                "menuItem1", new String[]{"/fxml/main_participante.fxml", "Reg.Participante", "T"},
+                "menuItemC", new String[]{"/fxml/login.fxml", "Salir", "C"}
+
+        );
+        public void handle(ActionEvent e){
+            String id=((MenuItem)e.getSource()).getId();
+            if(menuConfig.containsKey(id)){
+                String[] items=menuConfig.get(id);
+                if(items[2].equals("C")){
+                    Platform.exit();
+                    System.exit(0);
+                }else{
+                    abrirTabPaneFXML(items[0],items[1]);
+                }
+            }
+        }
+        private void abrirTabPaneFXML(String fxmlPath, String tittle){
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+                loader.setControllerFactory(context::getBean);
+                Parent root = loader.load();
+                ScrollPane scrollPane = new ScrollPane (root);
+                scrollPane.setFitToWidth(true);
+                scrollPane.setFitToHeight(true);
+                Tab newTap = new Tab (tittle, scrollPane);
+                tabPane.getTabs().clear();
+                tabPane.getTabs().add(newTap);
+
+
+        }catch(Exception ex){
+throw  new RuntimeException(ex);
+
+            }
+        }
+
+
+    }
+    class MenuListener  {
+        public void handle(Event e){}
+
+    }
 }
