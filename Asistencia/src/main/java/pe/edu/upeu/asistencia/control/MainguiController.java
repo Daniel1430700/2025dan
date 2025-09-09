@@ -6,6 +6,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +27,43 @@ public class MainguiController {
 
     @FXML
     MenuItem menuItem1, menuItemC ;
+
+    Menu menuEstilos=new Menu("Cambiar Estilos");
+        ComboBox<String> comboEstilo=new ComboBox<>();
+    CustomMenuItem customMenuItem=new CustomMenuItem(comboEstilo);
+
     @Autowired
     ApplicationContext context;
 
     @FXML
     public void initialize(){
+        comboEstilo.getItems().addAll("Estilo por defecto","Estilo oscuro"
+                ,"Estilo azul","Estilo rosado", "Estilo verde");
+        comboEstilo.setOnAction(e->cambiarEstilo());
+        customMenuItem.setHideOnClick(false);
+        menuEstilos.getItems().addAll(customMenuItem);
         MenuItemListener mItemListener = new MenuItemListener();
         menuItem1.setOnAction(mItemListener::handle);
         menuItemC.setOnAction(mItemListener::handle);
-
+menuBar.getMenus().addAll(menuEstilos);
     }
+
+public void cambiarEstilo (){
+        String estio=comboEstilo.getSelectionModel().getSelectedItem();
+        Scene scene=bp.getScene();
+        scene.getStylesheets().clear();
+        switch(estio){
+            case "Estilo oscuro":
+                scene.getStylesheets().add(getClass().getResource("/css/css/estilo-oscuro.css").toExternalForm()); break;
+            case "Estilo azul":
+                scene.getStylesheets().add(getClass().getResource("/css/css/estilo-azul.css").toExternalForm()); break;
+            case "Estilo rosado":
+                scene.getStylesheets().add(getClass().getResource("/css/css/estilo-rosado.css").toExternalForm()); break;
+            case "Estilo verde":
+                scene.getStylesheets().add(getClass().getResource("/css/css/estilo-verde.css").toExternalForm()); break;
+            default: break;
+        }
+}
 
     class MenuItemListener  {
         Map<String, String[]> menuConfig=Map.of(
