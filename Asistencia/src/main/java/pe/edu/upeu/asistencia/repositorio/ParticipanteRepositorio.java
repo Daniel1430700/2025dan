@@ -17,7 +17,7 @@ public abstract class ParticipanteRepositorio {
                         new SimpleStringProperty("25456845"),
                         new SimpleStringProperty("Daniel"),
                         new SimpleStringProperty("CONDORI"),
-                        new SimpleBooleanProperty(true), Carrera.SISTEMAS,
+                        new SimpleBooleanProperty(true), Carrera.RADIOGRAFIA,
                         TipoParticipante.ASISTENTE
                 )
         );
@@ -26,7 +26,7 @@ public abstract class ParticipanteRepositorio {
                         new SimpleStringProperty("84575955"),
                         new SimpleStringProperty("Sam<3"),
                         new SimpleStringProperty("valle"),
-                        new SimpleBooleanProperty(true), Carrera.ENFERMERIA,
+                        new SimpleBooleanProperty(true), Carrera.PEDIATRIA,
                         TipoParticipante.ASISTENTE
                 )
         );
