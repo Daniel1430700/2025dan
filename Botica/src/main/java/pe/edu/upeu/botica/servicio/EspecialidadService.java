@@ -1,4 +1,4 @@
-package pe.edu.upeu.Botica.servicio;
+package pe.edu.upeu.botica.servicio;
 import org.springframework.stereotype.Service;
 import pe.edu.upeu.Botica.modelo.Especialidad;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package pe.edu.upeu.Botica.control;
+package pe.edu.upeu.botica.control;
 
 import org.springframework.stereotype.Controller;
 

@@ -1,5 +1,6 @@
-package pe.edu.upeu.botica.modelo;
+package pe.edu.upeu.especialidad.modelo;
 
+import javafx.beans.property.IntegerProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Especialidad {
-    private Long id;
+    private IntegerProperty id;
     private String nombre;
 }

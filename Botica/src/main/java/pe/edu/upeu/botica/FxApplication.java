@@ -1,4 +1,4 @@
-package pe.edu.upeu.Botica;
+package pe.edu.upeu.botica;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

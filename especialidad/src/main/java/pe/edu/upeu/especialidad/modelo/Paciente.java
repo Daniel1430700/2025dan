@@ -1,4 +1,4 @@
-package pe.edu.upeu.botica.modelo;
+package pe.edu.upeu.especialidad.modelo;
 
 import lombok.Data;
 
