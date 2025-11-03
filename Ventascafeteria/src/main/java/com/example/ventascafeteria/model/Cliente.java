@@ -1,0 +1,26 @@
+package com.example.ventascafeteria.model;
+
+import com.example.ventascafeteria.enums.TipoDocumento;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@Table(name = "cafeteria_cliente")public class Cliente {
+    @Id
+    @Column(name = "dniruc", nullable = false, length = 12)
+    private String dniruc;
+    @Column(name = "nombres", nullable = false, length = 160)
+    private String nombres;
+    @Column(name = "rep_legal", length = 160)
+    private String repLegal;
+    @Column(name = "tipo_documento", nullable = false, length = 12)
+    @Enumerated(EnumType.STRING)
+    private TipoDocumento tipoDocumento;
+}

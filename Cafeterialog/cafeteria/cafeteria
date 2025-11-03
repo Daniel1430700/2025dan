@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS cafeteria_db;
+USE cafeteria_db;
+
+CREATE TABLE usuarios (
+  id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  rol ENUM('ADMIN','CAJERO') NOT NULL
+);
+
+INSERT INTO usuarios (username, password, rol) VALUES
+('admin', '1234', 'ADMIN'),
+('juan', '1234', 'CAJERO');
