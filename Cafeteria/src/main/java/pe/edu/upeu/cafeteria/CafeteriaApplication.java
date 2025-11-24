@@ -2,44 +2,42 @@ package pe.edu.upeu.cafeteria;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 
-//OFICIAL--7-10CUTBRE2025---SECION3GUIAPRACTICADOCUMETOS
-// agregar extends Application e implementar metodos
 @SpringBootApplication
 public class CafeteriaApplication extends Application {
-
     private ConfigurableApplicationContext context;
     private Parent parent;
     public static void main(String[] args) {
-        //SpringApplication.run(CafeteriaApplication.class, args);
         launch(args);
+        //SpringApplication.run(CafeteriaApplication.class, args);
     }
-
     @Override
     public void init() throws Exception {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(CafeteriaApplication.class);
         builder.application().setWebApplicationType(WebApplicationType.NONE);
         context=builder.run(getParameters().getRaw().toArray(new String[0]));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main_producto.fxml"));
         loader.setControllerFactory(context::getBean);
         parent = loader.load();
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-        Screen screen = Screen.getPrimary();
-        Rectangle2D bounds = screen.getVisualBounds();
-        stage.setScene(new Scene(parent, bounds.getWidth(), bounds.getHeight()-100));
-        stage.setTitle("Cafeteria CafeteriaCenterLife");
+        //Screen screen = Screen.getPrimary();
+        //Rectangle2D bounds = screen.getVisualBounds();
+        //stage.setScene(new Scene(parent, bounds.getWidth(),bounds.getHeight()-100));
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.setTitle("SysVentas SysCenterLife");
         stage.show();
     }
-    }
+}
