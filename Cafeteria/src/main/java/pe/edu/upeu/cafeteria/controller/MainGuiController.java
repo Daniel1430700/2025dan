@@ -58,7 +58,7 @@ public class MainGuiController {
     ComboBox<String> comboBoxIdioma = new ComboBox<>(
             javafx.collections.FXCollections.observableArrayList(
                     "Español",
-                    "Ingles"
+                    "Ingles","Frances"
             ) );
     CustomMenuItem customItemIdioma = new CustomMenuItem(comboBoxIdioma);
     @FXML
@@ -231,12 +231,9 @@ public class MainGuiController {
         String idiomaSeleccionado =
                 comboBoxIdioma.getSelectionModel().getSelectedItem();
         switch (idiomaSeleccionado) {
-            case "Español":
-                userPrefs.put("IDIOMAX", "es");
-                break;
-            case "Ingles":
-                userPrefs.put("IDIOMAX", "en");
-                break;
+            case "Español": userPrefs.put("IDIOMAX", "es");break;
+            case "Ingles": userPrefs.put("IDIOMAX", "en");break;
+            case "Frances": userPrefs.put("IDIOMAX", "fr");break;
             default: userPrefs.put("IDIOMAX", "es"); break;
         }
         System.out.println("Cambiando idioma a: " + idiomaSeleccionado);

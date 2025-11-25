@@ -50,10 +50,10 @@ public class UtilsX {
         String idioma = "";
         try {
             FileInputStream in = new FileInputStream(
-                    getFileExterno("language", "SysCenterLife.properties").getAbsolutePath());
+                    getFileExterno("language", "CenterLife.properties").getAbsolutePath());
             try {
                 myresourcesx.load(in);
-                idioma = myresourcesx.getProperty("syscenterlife.idioma");
+                idioma = myresourcesx.getProperty("centerlife.idioma");
             } catch (IOException e) {
                 e.printStackTrace();
             }
