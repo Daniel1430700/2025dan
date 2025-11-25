@@ -25,7 +25,7 @@ public class CafeteriaApplication extends Application {
         builder.application().setWebApplicationType(WebApplicationType.NONE);
         context=builder.run(getParameters().getRaw().toArray(new String[0]));
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/main_producto.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
         loader.setControllerFactory(context::getBean);
         parent = loader.load();
     }
@@ -37,7 +37,7 @@ public class CafeteriaApplication extends Application {
         //stage.setScene(new Scene(parent, bounds.getWidth(),bounds.getHeight()-100));
         Scene scene = new Scene(parent);
         stage.setScene(scene);
-        stage.setTitle("SysVentas SysCenterLife");
+        stage.setTitle("Cafeteria CenterLife");
         stage.show();
     }
 }
